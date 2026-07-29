@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy National Girlfriend's Day 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body{
+    height:100%;
+    margin:0;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    overflow-x:hidden;
+    background:#ffd1dc;
+}
+
+html{
+    overflow-x:hidden;
+}
+
+/* SCREENS */
+.screen{
+    width:100%;
+    min-height:100vh;
+    min-height:100dvh;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition:1s ease;
+    overflow:hidden;
+}
+
+.scene-illustration{
+    position:relative;
+    width:min(92vw, 620px);
+    height:min(70vh, 420px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:24px;
+}
+
+.character-card{
+    position:absolute;
+    left:6%;
+    bottom:8%;
+    width:280px;
+    height:320px;
+    border-radius:50% 50% 42% 42%;
+    background:linear-gradient(145deg, #fff4f8, #ffe3ec);
+    box-shadow:0 14px 35px rgba(182, 109, 161, 0.22);
+    overflow:hidden;
+    transform:rotate(-2deg);
+    animation:walkIn 2.8s ease-in-out infinite alternate;
+}
+
+.character-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.95), transparent 38%);
+}
+
+.character-head{
+    position:absolute;
+    top:54px;
+    left:92px;
+    width:92px;
+    height:92px;
+    border-radius:50%;
+    background:linear-gradient(145deg, #f4d0b5, #e6b996);
+}
+
+.character-hair{
+    position:absolute;
+    top:34px;
+    left:78px;
+    width:120px;
+    height:110px;
+    border-radius:50% 50% 48% 48%;
+    background:#5f3f38;
+    box-shadow:inset 0 -8px 0 rgba(255,255,255,0.08);
+}
+
+.character-body{
+    position:absolute;
+    left:88px;
+    bottom:54px;
+    width:110px;
+    height:140px;
+    border-radius:42px 42px 24px 24px;
+    background:linear-gradient(145deg, #ffffff, #ffe5ef);
+}
+
+.character-arm{
+    position:absolute;
+    left:138px;
+    bottom:118px;
+    width:94px;
+    height:36px;
+    border-radius:20px;
+    background:linear-gradient(145deg, #f4d0b5, #e6b996);
+    transform:rotate(-18deg);
+    transform-origin:left center;
+    animation:reachOut 1.4s ease-in-out infinite alternate;
+}
+
+.character-hand{
+    position:absolute;
+    right:-10px;
+    top:-4px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#f4d0b5;
+}
+
+.bouquet-card{
+    position:absolute;
+    right:8%;
+    bottom:10%;
+    width:250px;
+    height:220px;
+    border-radius:50px;
+    background:linear-gradient(145deg, rgba(255,255,255,0.95), rgba(244,225,248,0.95));
+    box-shadow:0 15px 35px rgba(143,88,167,0.18);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:7rem;
+    animation:floatBouquet 2.2s ease-in-out infinite;
+}
+
+.bouquet-card::before,
+.bouquet-card::after{
+    content:"🌸";
+    position:absolute;
+    font-size:2rem;
+    opacity:0.75;
+    animation:petalDrift 3.2s ease-in-out infinite;
+}
+
+.bouquet-card::before{top:20px;left:28px;}
+.bouquet-card::after{bottom:24px;right:26px;animation-delay:1s;}
+
+.sparkle{position:absolute;font-size:1.2rem;animation:sparkleFloat 1.8s ease-in-out infinite;opacity:0.9;pointer-events:none;}
+.sparkle.one{top:12%;left:20%;animation-delay:0s;}
+.sparkle.two{top:18%;right:24%;animation-delay:0.45s;}
+.sparkle.three{bottom:16%;left:32%;animation-delay:0.9s;}
+.sparkle.four{bottom:12%;right:20%;animation-delay:1.2s;}
+
+.petals{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.petals span{
+    position:absolute;
+    font-size:1.3rem;
+    animation:petalDrift 3.8s linear infinite;
+    opacity:0.8;
+}
+
+.petals span:nth-child(1){left:14%;top:18%;animation-delay:0s;}
+.petals span:nth-child(2){left:34%;top:10%;animation-delay:0.8s;}
+.petals span:nth-child(3){right:16%;top:24%;animation-delay:1.4s;}
+.petals span:nth-child(4){left:22%;bottom:20%;animation-delay:2.1s;}
+.petals span:nth-child(5){right:26%;bottom:18%;animation-delay:2.6s;}
+
+/* SCREEN 1 */
+#screen1{
+    display:flex;
+    background:linear-gradient(135deg,#ffd1dc,#ff9eb5,#ff7aa2);
+    text-align:center;
+    color:white;
+    position:relative;
+    padding:20px;
+}
+
+#screen1 h1{
+    font-family:'Pacifico', cursive;
+    font-size:clamp(2.5rem,5vw,5rem);
+    text-shadow:0 0 20px rgba(255,255,255,.6);
+    margin-bottom:40px;
+}
+
+/* HEART BUTTON */
+.heart-btn{
+    position:relative;
+    width:180px;
+    height:60px;
+    border:none;
+    background:#ff4f7b;
+    color:white;
+    font-size:1rem;
+    font-weight:600;
+    border-radius:50px;
+    cursor:pointer;
+    box-shadow:0 0 25px rgba(255,79,123,.7);
+    transition:.3s;
+}
+
+.heart-btn:hover{
+    transform:scale(1.08);
+}
+
+.heart-btn::before{
+    content:"💖";
+    margin-right:8px;
+}
+
+/* FLOATING HEARTS */
+.heart{
+    position:absolute;
+    color:white;
+    opacity:.4;
+    animation:float 8s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:.5;
+    }
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+
+/* SCREEN 2 */
+#screen2{
+    display:none;
+    background:linear-gradient(to bottom,#fff0f5,#ffe6f0);
+    padding:40px 20px 60px;
+    overflow-y:auto;
+    justify-content:flex-start;
+    align-items:center;
+    min-height:100vh;
+    min-height:100dvh;
+}
+
+#screen3{
+    display:none;
+    background:linear-gradient(135deg,#f8f0ff,#e8d5ff);
+    padding:40px 20px 60px;
+    overflow-y:auto;
+    justify-content:flex-start;
+    align-items:center;
+    min-height:100vh;
+    min-height:100dvh;
+}
+
+.content{
+    max-width:900px;
+    width:100%;
+    text-align:center;
+    padding-bottom:20px;
+}
+
+.image-frame{
+    width:320px;
+    height:420px;
+    margin:auto;
+    border-radius:25px;
+    overflow:hidden;
+    border:8px solid white;
+    box-shadow:0 10px 40px rgba(255,105,180,.25);
+    background:white;
+}
+
+.image-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* MESSAGE */
+.message{
+    margin-top:35px;
+    background:rgba(255,255,255,.7);
+    padding:25px;
+    border-radius:20px;
+    line-height:1.8;
+    font-size:1.05rem;
+    color:#555;
+    backdrop-filter:blur(8px);
+}
+
+/* SOFT GLOW */
+.glow{
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:rgba(255,182,193,.25);
+    border-radius:50%;
+    filter:blur(80px);
+    animation:pulse 6s infinite ease-in-out;
+}
+
+.glow:nth-child(1){
+    top:10%;
+    left:10%;
+}
+
+.glow:nth-child(2){
+    bottom:10%;
+    right:10%;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.2);
+    }
+}
+
+@media (max-width: 600px){
+    #screen1 h1{
+        font-size:clamp(2rem,8vw,3rem);
+        line-height:1.2;
+        margin-bottom:24px;
+    }
+
+    .heart-btn{
+        width:160px;
+        height:54px;
+        font-size:.95rem;
+    }
+
+    #screen2{
+        padding:20px 14px 40px;
+    }
+
+    .content{
+        max-width:100%;
+    }
+
+    .image-frame{
+        width:min(88vw,280px);
+        height:auto;
+        aspect-ratio:3/4;
+    }
+
+    .message{
+        padding:18px;
+        font-size:.95rem;
+        line-height:1.7;
+    }
+}
+
+.scene-illustration{
+    position:relative;
+    width:min(92vw, 620px);
+    height:min(72vh, 430px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:24px;
+}
+
+.character-card{
+    position:absolute;
+    left:4%;
+    bottom:6%;
+    width:290px;
+    height:360px;
+    border-radius:50% 50% 42% 42%;
+    background:linear-gradient(145deg, #fff7fb, #ffe3ec);
+    box-shadow:0 16px 36px rgba(182, 109, 161, 0.22);
+    overflow:visible;
+    transform:rotate(-2deg);
+    animation:walkIn 2.8s ease-in-out infinite alternate;
+}
+
+.character-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.95), transparent 38%);
+}
+
+.character-head{
+    position:absolute;
+    top:48px;
+    left:95px;
+    width:96px;
+    height:96px;
+    border-radius:50%;
+    background:linear-gradient(145deg, #f4d0b5, #e6b996);
+    box-shadow:inset -4px -4px 0 rgba(0,0,0,0.04);
+}
+
+.character-hair{
+    position:absolute;
+    top:26px;
+    left:82px;
+    width:124px;
+    height:114px;
+    border-radius:50% 50% 48% 48%;
+    background:#5f3f38;
+    box-shadow:inset 0 -8px 0 rgba(255,255,255,0.08);
+}
+
+.character-eye{
+    position:absolute;
+    top:76px;
+    width:10px;
+    height:10px;
+    background:#2f1e24;
+    border-radius:50%;
+    box-shadow:0 0 0 6px #fff;
+}
+
+.character-eye.left{left:118px;}
+.character-eye.right{right:112px;}
+
+.character-smile{
+    position:absolute;
+    top:96px;
+    left:128px;
+    width:34px;
+    height:18px;
+    border-bottom:3px solid #b96e55;
+    border-radius:0 0 18px 18px;
+}
+
+.character-body{
+    position:absolute;
+    left:90px;
+    bottom:56px;
+    width:116px;
+    height:152px;
+    border-radius:44px 44px 26px 26px;
+    background:linear-gradient(145deg, #ffffff, #ffe5ef);
+    box-shadow:inset 0 -6px 0 rgba(0,0,0,0.05);
+}
+
+.character-arm{
+    position:absolute;
+    width:102px;
+    height:34px;
+    border-radius:20px;
+    background:linear-gradient(145deg, #f4d0b5, #e6b996);
+    transform-origin:left center;
+}
+
+.character-arm.left{
+    left:146px;
+    bottom:122px;
+    transform:rotate(-18deg);
+    animation:reachOut 1.4s ease-in-out infinite alternate;
+}
+
+.character-arm.right{
+    left:118px;
+    bottom:142px;
+    width:80px;
+    transform:rotate(24deg);
+}
+
+.character-hand{
+    position:absolute;
+    right:-8px;
+    top:-4px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#f4d0b5;
+}
+
+.character-heart{
+    position:absolute;
+    left:166px;
+    bottom:118px;
+    font-size:1.3rem;
+    animation:pulseHeart 1.6s ease-in-out infinite;
+}
+
+.bouquet-card{
+    position:absolute;
+    right:6%;
+    bottom:8%;
+    width:280px;
+    height:240px;
+    border-radius:46px;
+    background:linear-gradient(145deg, rgba(255,255,255,0.95), rgba(244,225,248,0.95));
+    box-shadow:0 16px 36px rgba(143,88,167,0.18);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation:floatBouquet 2.2s ease-in-out infinite;
+    transform:perspective(500px) rotate(-6deg);
+}
+
+.bouquet-card .stem{
+    position:absolute;
+    bottom:24px;
+    width:10px;
+    height:120px;
+    background:linear-gradient(180deg, #8bcf7b, #4a8b4d);
+    border-radius:20px;
+    transform:rotate(-12deg);
+}
+
+.bouquet-card .flower{
+    position:absolute;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, #ffffff, #f7b7d9 25%, #cf7acb 70%, #8b4ea5 100%);
+    box-shadow:0 0 0 8px rgba(255,255,255,0.5), 0 8px 16px rgba(139,78,165,0.2);
+}
+
+.bouquet-card .flower.one{left:90px;top:60px;transform:rotate(-8deg);} 
+.bouquet-card .flower.two{left:132px;top:42px;transform:rotate(12deg);} 
+.bouquet-card .flower.three{left:96px;top:112px;transform:rotate(18deg);} 
+.bouquet-card .flower.four{left:148px;top:104px;transform:rotate(-10deg);} 
+.bouquet-card .flower.five{left:120px;top:84px;transform:scale(0.8);} 
+
+.bouquet-card .leaf{
+    position:absolute;
+    width:46px;
+    height:64px;
+    background:linear-gradient(180deg, #98dca2, #5da579);
+    border-radius:0 100% 0 100%;
+    opacity:0.9;
+}
+
+.bouquet-card .leaf.one{left:78px;bottom:54px;transform:rotate(32deg);} 
+.bouquet-card .leaf.two{right:78px;bottom:48px;transform:rotate(-28deg) scaleX(-1);} 
+
+.sparkle{
+    position:absolute;
+    font-size:1.2rem;
+    animation:sparkleFloat 1.8s ease-in-out infinite;
+    opacity:0.9;
+    pointer-events:none;
+}
+
+.sparkle.one{top:12%;left:20%;animation-delay:0s;}
+.sparkle.two{top:18%;right:24%;animation-delay:0.45s;}
+.sparkle.three{bottom:16%;left:32%;animation-delay:0.9s;}
+.sparkle.four{bottom:12%;right:20%;animation-delay:1.2s;}
+
+.petals{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.petals span{
+    position:absolute;
+    font-size:1.3rem;
+    animation:petalDrift 3.8s linear infinite;
+    opacity:0.8;
+}
+
+.petals span:nth-child(1){left:14%;top:18%;animation-delay:0s;}
+.petals span:nth-child(2){left:34%;top:10%;animation-delay:0.8s;}
+.petals span:nth-child(3){right:16%;top:24%;animation-delay:1.4s;}
+.petals span:nth-child(4){left:22%;bottom:20%;animation-delay:2.1s;}
+.petals span:nth-child(5){right:26%;bottom:18%;animation-delay:2.6s;}
+
+.flower-text{
+    color:#7d4ca0;
+    margin-bottom:30px;
+    font-family:'Pacifico', cursive;
+    display:inline-block;
+    overflow:hidden;
+    white-space:nowrap;
+    border-right:2px solid #7d4ca0;
+    width:0;
+    animation:typewriter 2.2s steps(20, end) 0.5s forwards, blink 0.8s step-end infinite;
+}
+
+@keyframes typewriter{
+    from{width:0;}
+    to{width:20ch;}
+}
+
+@keyframes blink{
+    50%{border-color:transparent;}
+}
+
+@keyframes walkIn{
+    0%{transform:translateX(-8px) rotate(-2deg);}
+    100%{transform:translateX(6px) rotate(1deg);}
+}
+
+@keyframes reachOut{
+    0%{transform:rotate(-18deg);}
+    100%{transform:rotate(-8deg);}
+}
+
+@keyframes floatBouquet{
+    0%,100%{transform:translateY(0) rotate(-1deg);}
+    50%{transform:translateY(-10px) rotate(1deg);}
+}
+
+@keyframes sparkleFloat{
+    0%,100%{transform:translateY(0) scale(1); opacity:0.7;}
+    50%{transform:translateY(-10px) scale(1.2); opacity:1;}
+}
+
+@keyframes petalDrift{
+    0%{transform:translateY(0) rotate(0deg); opacity:0.2;}
+    50%{opacity:0.8;}
+    100%{transform:translateY(-24px) rotate(20deg); opacity:0;}
+}
+
+@keyframes pulseHeart{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+}
+
+</style>
+</head>
+<body>
+
+<!-- SCREEN 1 -->
+<section id="screen1" class="screen">
+    <h1>Happy National Girlfriend's Day 💖</h1>
+
+    <button class="heart-btn" onclick="showScreen2()">
+        Click to Continue
+    </button>
+</section>
+
+
+<!-- FLOWER SURPRISE SCREEN -->
+<section id="screen2" class="screen" style="display:none;background:linear-gradient(135deg,#f8f0ff,#e8d5ff);">
+
+    <div class="scene-illustration">
+        <div class="sparkle one">✨</div>
+        <div class="sparkle two">✨</div>
+        <div class="sparkle three">✨</div>
+        <div class="sparkle four">✨</div>
+
+        <div class="petals">
+            <span>🌿</span>
+            <span>🌼</span>
+            <span>🌷</span>
+            <span>🌸</span>
+            <span>💜</span>
+        </div>
+
+        <div class="character-card">
+            <div class="character-hair"></div>
+            <div class="character-head"></div>
+            <div class="character-eye left"></div>
+            <div class="character-eye right"></div>
+            <div class="character-smile"></div>
+            <div class="character-body"></div>
+            <div class="character-arm left">
+                <div class="character-hand"></div>
+            </div>
+            <div class="character-arm right"></div>
+            <div class="character-heart">💗</div>
+        </div>
+
+        <div class="bouquet-card">
+            <span class="stem"></span>
+            <span class="leaf one"></span>
+            <span class="leaf two"></span>
+            <span class="flower one"></span>
+            <span class="flower two"></span>
+            <span class="flower three"></span>
+            <span class="flower four"></span>
+            <span class="flower five"></span>
+        </div>
+    </div>
+
+    <h2 class="flower-text">These are for you 💜</h2>
+
+    <button class="heart-btn" onclick="showScreen3()">
+        Click Here For Full Surprise ✨
+    </button>
+
+</section>
+
+
+<!-- SCREEN 3 -->
+<section id="screen3" class="screen" style="display:none;">
+    <div class="glow"></div>
+    <div class="glow"></div>
+
+    <div class="content">
+
+        <!-- Replace image later -->
+        <div class="image-frame">
+            <img src="./funmi.jpeg"
+                 alt="Girlfriend Photo">
+        </div>
+
+        <div class="message">
+            <h2 style="margin-bottom:15px;">💌 A Message For My Munchkin❤️</h2>
+
+            <p>
+                My dearest Funmilayo 💖🥰,
+
+Happy National Girlfriend's Day, my love ❤️🌹✨.
+
+Today is all about celebrating you 🥹💕, and honestly, I don't think a single day is enough to express how much you mean to me. If there's one thing I'm grateful for every single day 🙏🏽❤️, it's having you in my life. You have become such an important part of my world 🌍💞 that it's hard to imagine what life would be like without you. You bring so much happiness 😊💖, peace 🕊️💕, warmth ☀️💗, and love 💘 into my life, and I want you to know how much I appreciate every little thing about you 🥰🌷.
+
+When I think about us ❤️, I can't help but smile 😊 because of all the beautiful memories we've created together 💕📸. I think about our night walks 🌙🚶🏽‍♂️🚶🏽‍♀️✨, where we talked for hours and somehow never ran out of things to say 💬💕. Those moments meant so much to me because it wasn't really about where we were going—it was about being with you ❤️🤗. I think about our late-night calls 📱🌃💞, the ones that lasted much longer than they were supposed to because neither of us wanted to say goodbye 🥹💕. Those calls became some of my favorite moments, and no matter how stressful my day was 😩, hearing your voice always made everything feel better 🥰❤️.
+
+And then I think about our first kiss 😘💋❤️. That's a memory I'll cherish forever 💖✨. It wasn't just a moment; it was a feeling I'll never forget 🥹💕. Every time I remember it, I smile 😊💗 because it reminds me of how special you are to me and how lucky I am to have shared that beautiful moment with you ❤️🌹.
+
+Funmilayo 💕, thank you for being such an incredible person 🌷✨. Thank you for your love ❤️, your patience 🤍, your kindness 🌹, and your understanding 🫶🏽💕. Thank you for supporting me 💪🏽❤️, believing in me 🌟💖, and standing by me through so many moments. Thank you for every laugh 😂💕, every smile 😊💞, every conversation 💬❤️, and every memory 📸💖 we've shared together. You have brought a kind of happiness into my life that I cannot fully explain 🥹💘.
+
+You have a way of making ordinary days feel special 🌸✨. Your smile 😊💗 can brighten even my darkest days 🌤️❤️. Your laughter 😂💕 is one of my favorite sounds in the world 🌍🎶. Your presence alone 🥰💞 makes me feel calm, safe, and happy. There are times when simply seeing your name appear on my phone 📱❤️ is enough to make me smile like a fool 😭💕.
+
+I want you to know that I truly appreciate you 🥹🌹. I appreciate your love ❤️, your effort 💕, your care 🤗💖, and everything you do for us. This past year has been one of the most beautiful chapters of my life 📖💞, and a huge reason for that is you 💘✨. You have given me memories I'll cherish forever 💕📸 and moments I'll always hold close to my heart ❤️🫶🏽.
+
+As we continue this journey together 🚶🏽‍♂️❤️🚶🏽‍♀️, I hope we create even more beautiful memories 🌅💕. More night walks 🌙✨, more late-night calls 📱💞, more laughter 😂❤️, more adventures 🌍✈️💕, more random moments that become unforgettable memories 📸💖. I hope we continue growing together 🌱❤️, supporting each other 🤝🏽💕, and building something beautiful that lasts 🏡💘✨.
+
+Funmilayo 🥰💖, you mean more to me than words can ever fully express ❤️🫶🏽. You are one of the greatest blessings in my life 🙏🏽💕, one of my biggest reasons to smile 😊💗, and one of the most precious people in my world 🌍❤️. On this National Girlfriend's Day 💝🌹, I want you to know that you are deeply loved 💘, endlessly appreciated 🥹💕, and incredibly cherished ❤️✨.
+
+I love you today ❤️, I will love you tomorrow 💕, and I will continue loving you through every beautiful moment we create together 💖🌹✨. Thank you for being my happiness 😊❤️, my peace 🕊️💕, my best friend 🫶🏽💖, and the beautiful woman I get to call mine 🥰👑❤️.
+
+Happy National Girlfriend's Day, my love 💐💖😘❤️🌹✨.
+
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Optional Background Music -->
+    <!-- Replace with your own mp3 -->
+    <audio autoplay loop>
+        <source src="romantic-music.mp3" type="audio/mpeg">
+    </audio>
+
+</section>
+
+<script>
+function showScreen(screenId){
+    document.querySelectorAll('.screen').forEach(screen => {
+        screen.style.display = 'none';
+    });
+    document.getElementById(screenId).style.display = 'flex';
+}
+
+function showScreen2(){
+    showScreen('screen2');
+}
+
+function showScreen3(){
+    showScreen('screen3');
+}
+
+/* Floating Hearts */
+for(let i=0; i<20; i++){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 8) + "s";
+    heart.style.animationDelay = Math.random() * 5 + "s";
+    document.getElementById("screen1").appendChild(heart);
+}
+</script>
+
+</body>
+</html>
