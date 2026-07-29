@@ -637,7 +637,7 @@ html{
 <section id="screen1" class="screen">
     <h1>Happy National Girlfriend's Day 💖</h1>
 
-    <button class="heart-btn" onclick="showScreen2()">
+    <button class="heart-btn" onclick="playBgMusic(); showScreen2()">
         Click to Continue
     </button>
 </section>
@@ -688,7 +688,7 @@ html{
 
     <h2 class="flower-text">These are for you 💜</h2>
 
-    <button class="heart-btn" onclick="showScreen3()">
+    <button class="heart-btn" onclick="playBgMusic(); showScreen3()">
         Click Here For Full Surprise ✨
     </button>
 
@@ -742,13 +742,23 @@ Happy National Girlfriend's Day, my love 💐💖😘❤️🌹✨.
     </div>
 
     <!-- Optional Background Music -->
-    <audio autoplay loop>
+    <audio id="bgMusic" loop preload="auto">
         <source src="Ruth-B.-Dandelions.mp3" type="audio/mpeg">
     </audio>
 
 </section>
 
 <script>
+let bgMusicStarted = false;
+
+function playBgMusic(){
+    const music = document.getElementById('bgMusic');
+    if (!bgMusicStarted && music) {
+        music.play().catch(() => {});
+        bgMusicStarted = true;
+    }
+}
+
 function showScreen(screenId){
     document.querySelectorAll('.screen').forEach(screen => {
         screen.style.display = 'none';
